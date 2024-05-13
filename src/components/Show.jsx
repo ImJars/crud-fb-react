@@ -12,9 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 
-// import Swal from 'sweetalert2'
-// // import withReactContent from 'sweetalert2-react-content'
-// const MySwal = withReactContent(Swal)
+import Swal from 'sweetalert2'
 
 function Show() {
   //1 - Configuramos HOOKS
@@ -37,7 +35,27 @@ function Show() {
     getProducts();
   };
 
-  //5 - Funcion de eliminacion para SweetAlert
+  //5 - Funcion de confirmacion para SweetAlert
+  const confirmDelete = (id) => {
+    Swal.fire({
+        title: '¿Remove the product?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deleteProduct(id);
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    })
+  }
 
   //6 - Usamos useEffect
   useEffect(() => {
@@ -73,7 +91,7 @@ function Show() {
                       <td>{product.stock}</td>
                       <td>
                         <Link to={`/edit/${product.id}`} className="btn btn-light"><FaEdit/></Link>
-                        <button onClick={() => {deleteProduct(product.id)}} className="btn btn-danger"><FaTrash/></button>
+                        <button onClick={() => {confirmDelete(product.id)}} className="btn btn-danger"><FaTrash/></button>
                       </td>
                     </tr>
                   ))}
