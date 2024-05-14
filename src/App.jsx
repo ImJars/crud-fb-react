@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <div>
+      <div className="bg-primary w-full h-screen">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Show />} />

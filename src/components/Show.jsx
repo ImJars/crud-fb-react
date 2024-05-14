@@ -67,36 +67,44 @@ function Show() {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <div className="d-grid gap-2">
-              <Link to="/create" className="btn btn-secondary mt-2 mb-2">
+      <div className="w-full h-full flex justify-center items-center">
+        <div className="">
+          <div className="">
+            <div className="d-grid gap-2 flex justify-center my-4">
+              <Link to="/create" className="px-40 py-2 text-text-white-gray font-bold text-4xl border border-text-general rounded-xl border-opacity-25 bg-secondary">
                 Create
               </Link>
             </div>
-            <table className="table">
-                <thead>
-                  <tr>
-                    <th>Description</th>
-                    <th>Stock</th>
-                    <th>Acctions</th>
+            <table className="w-full h-full flex flex-col bg-table-color text-text-general rounded-xl">
+                <thead className="w-full h-full">
+                  <tr className="flex justify-between">
+                    <th className="w-full text-center p-5">Description</th>
+                    <th className="w-full text-center p-5">Stock</th>
+                    <th className="w-full text-center p-5">Acctions</th>
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody className="w-full">
                   {products.map((product) => (
-                    <tr key={product.id}>
-                      <td>{product.description}</td>
-                      <td>{product.stock}</td>
-                      <td>
-                        <Link to={`/edit/${product.id}`} className="btn btn-light"><FaEdit/></Link>
-                        <button onClick={() => {confirmDelete(product.id)}} className="btn btn-danger"><FaTrash/></button>
+                    <tr className="flex justify-between" key={product.id}>
+                      <td className="w-full text-start mt-10">{product.description}</td>
+                      <td className="w-full flex justify-center mt-10">{product.stock}</td>
+                      <td className="w-full flex justify-center mt-10 items-center space-x-4">
+                        <Link to={`/edit/${product.id}`} className="btn btn-light"><FaEdit className="text-3xl"/></Link>
+                        <button onClick={() => {confirmDelete(product.id)}} className="btn btn-danger"><FaTrash className="text-3xl"/></button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+
+              <div>
+                <div>
+                  <h1 className="text-text-white-gray text-4xl">
+                    contador
+                  </h1>
+                </div>
+              </div>
           </div>
         </div>
       </div>
