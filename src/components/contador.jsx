@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, doc, getDoc, updateDoc } from "@firebase/firestore";
+import { getFirestore, doc, getDoc, updateDoc, addDoc, collection, setDoc } from "@firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 
 function Contador({ idContador }) {
@@ -11,6 +11,8 @@ function Contador({ idContador }) {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setContador(docSnap.data().valor);
+        } else {
+          await setDoc(docRef, { valor: 0 });
         }
       };
       obtenerContador();
@@ -29,15 +31,14 @@ function Contador({ idContador }) {
         setContador(contador - 1);
       }
     };
-  return (
-    <>
+  
+    return (
       <div>
         <p>Contador: {contador}</p>
         <button onClick={incrementar}>Incrementar</button>
         <button onClick={decrementar}>Decrementar</button>
       </div>
-    </>
-  );
-}
+    );
+  }
 
 export default Contador;

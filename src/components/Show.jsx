@@ -105,6 +105,12 @@ function Show() {
                     <Contador idContador={"miContador"}/>
 
                     <Contador idContador={"miContador1"}/>
+                    <Contador idContador={"miContador2"}/>
+                    <Contador idContador={"miContador3"}/>
+                    <Contador idContador={"miContador4"}/>
+
+
+
 
                   </h1>
                 </div>
