@@ -13,6 +13,7 @@ import {
 import { db } from "../firebaseConfig/firebase";
 
 import Swal from 'sweetalert2'
+import Contador from "./contador";
 
 function Show() {
   //1 - Configuramos HOOKS
@@ -101,7 +102,10 @@ function Show() {
               <div>
                 <div>
                   <h1 className="text-text-white-gray text-4xl">
-                    contador
+                    <Contador idContador={"miContador"}/>
+
+                    <Contador idContador={"miContador1"}/>
+
                   </h1>
                 </div>
               </div>
